@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskWise Your Ai Assisant </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="app">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">✦</div>
+                <div>
+                    <h1>AskWise</h1>
+                    <p>Your AI question assistant</p>
+                </div>
+            </div>
+            <button id="clear-button" class="clear-button" type="button">Clear chat</button>
+        </header>
+
+        <section id="chat" class="chat" aria-live="polite">
+            <div class="welcome" id="welcome">
+                <div class="welcome-icon">✦</div>
+                <h2>What would you like to know?</h2>
+                <p>Type a question, speak to AskWise, or upload an image.</p>
+                <div class="suggestions">
+                    <button class="suggestion" type="button">Explain artificial intelligence</button>
+                    <button class="suggestion" type="button">How does the internet work?</button>
+                    <button class="suggestion" type="button">What is Python used for?</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="image-preview" class="image-preview" hidden>
+            <img id="preview-image" alt="Selected image preview">
+            <div class="preview-info">
+                <span id="image-name">Image selected</span>
+                <button id="remove-image" type="button" aria-label="Remove image">✕</button>
+            </div>
+        </div>
+
+        <form id="question-form" class="composer">
+            <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+            <button id="upload-button" class="tool-button" type="button" title="Upload an image" aria-label="Upload image">＋</button>
+            <button id="mic-button" class="tool-button" type="button" title="Speak your question" aria-label="Use microphone">🎙</button>
+            <label class="sr-only" for="question-input">Your question</label>
+            <textarea id="question-input" rows="1" placeholder="Ask anything..." maxlength="4000" required></textarea>
+            <button id="send-button" class="send-button" type="submit" aria-label="Send question">↑</button>
+        </form>
+        <p id="voice-status" class="voice-status" aria-live="polite"></p>
+        <p class="note">AI can make mistakes. Check important information.</p>
+    </main>
+
+    <!-- Markdown formatting -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Secure HTML sanitization -->
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+
+<!-- Main JavaScript -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
